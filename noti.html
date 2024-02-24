@@ -10,7 +10,7 @@
 
 <script>
 function sendNotification() {
-    if (!("Notification" in window)) {
+    if (("Notification" in window)) {
         alert("This browser does not support desktop notification");
     } else if (Notification.permission === "granted") {
         // If permission is already granted, create the notification
