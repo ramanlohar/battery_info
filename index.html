@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Battery Information</title>
+</head>
+<body>
+
+<p>Battery Level: <span id="batteryLevel">N/A</span>%</p>
+<p>Charging: <span id="chargingStatus">N/A</span></p>
+  <hr>
+  <a herf="notifications.html"></a>
+
+<script>
+navigator.getBattery().then(function(battery) {
+  updateBatteryInfo(battery);
+  
+  battery.addEventListener('levelchange', function() {
+    updateBatteryInfo(battery);
+  });
+  
+  battery.addEventListener('chargingchange', function() {
+    updateBatteryInfo(battery);
+  });
+});
+
+function updateBatteryInfo(battery) {
+  var batteryLevel = battery.level * 100;
+  var chargingStatus = battery.charging ? "Yes" : "No";
+  
+  document.getElementById('batteryLevel').textContent = batteryLevel.toFixed(2);
+  document.getElementById('chargingStatus').textContent = chargingStatus;
+}
+</script>
+
+</body>
+</html>
