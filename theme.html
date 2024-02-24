@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Detection</title>
+  <style>
+    body {
+      background-color: #ffffff; /* Default light background color */
+    }
+
+    .dark-mode body {
+      background-color: #222222; /* Dark background color */
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.onload = function() {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+      }
+    };
+  </script>
+</body>
+</html>
